@@ -4,7 +4,7 @@ session_start();
 include('../config/config.php');
 include('../lib/app.lib.php');
 
-userIsConnected('ROLE_ADMIN');
+userIsConnected();
 
 $vue='addArticle';
 $title = 'Ajouter un article';
@@ -57,8 +57,6 @@ try
             //On déplace le fichier transmis pour l'image d'entêt de l'article dans le répertoire upload/articles/ 
             if (isset($_FILES["picture"]) && $_FILES["picture"]["error"] == UPLOAD_ERR_OK) 
             {
-
-                //test.jpg 124324325345436_test.jpg
                 $tmp_name = $_FILES["picture"]["tmp_name"];
                 $name = basename(time().'_'.$_FILES["picture"]["name"]);
                 if(move_uploaded_file($tmp_name, REP_BLOG.REP_UPLOAD.'articles/'.$name))
@@ -72,10 +70,7 @@ try
             $values['userId'] = $_SESSION['user']['id'];
 
             $values['publish'] = $_POST['publish'];
-                /*art_id 	
-art_title 	art_content 	art_datepublish 	art_user_id 	art_datecreated 	
-art_picture 	art_publish 
-*/
+
             /**2 : Prépare ma requête SQL */
             $sth = $dbh->prepare('INSERT INTO article VALUES (NULL,:titre,:content, :date, :userId,:dateCreated,:picture,:publish)');
             var_dump($values);

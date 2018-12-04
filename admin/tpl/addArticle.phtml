@@ -20,7 +20,7 @@
 	<div class="form-group row">
 		<label for="date" class="col-sm-2 col-form-label">Date de publication :</label>
 		<div class="col-sm-10">
-			<input class="form-control" type="date" value="<?=$values['date']?>" name="date" id="date">
+			<input class="form-control" type="datetime" value="<?=$values['date']?>" name="date" id="date">
 		</div>
     </div>
 	<div class="form-group  row">
@@ -29,20 +29,21 @@
 			<input class="form-control" type="file" value="" name="picture" id="picture">
 		</div>
 		<?php if(isset($values['picture']) && $values['picture'] != NULL):?>
-			<img width="70" src="<?=URL_BLOG.REP_UPLOAD.'/articles/'.$values['picture']?>">
+			<img width="70" src="<?=URL_BLOG.REP_UPLOAD.'articles/'.$values['picture']?>">
+			<input type="hidden" value="<?=$values['picture']?>" name="oldpicture">
 		<?php endif;?>
 
     </div>
     <div class="form-check  row">
 		<label for="publish" class="col-sm-2 col-form-label">Publier :</label>
-		<input type="checkbox" name="publish" id="publish" value="1">
+	<input type="checkbox" name="publish" value="1" id="publish" <?php if(isset($values['publish']) && $values['publish']==1):?>checked<?php endif;?>>
 	</div>
 	
     <h2>Catégories :</h2>
     <?php foreach( $categories as $categorie):?>
         <div class="form-check row">
             <label class="col-sm-2 col-form-label" for="cat<?= $categorie['cat_title']; ?>"><?= $categorie['cat_title']; ?></label>
-            <input type="checkbox" name="categories[]" id="cat<?= $categorie['cat_title']; ?>" value="<?= $categorie['cat_id']; ?>">
+			<input <?php if(isset($tabcategories) && in_array($categorie['cat_id'],$tabcategories)):?>checked<?php endif;?> type="checkbox" name="categories[]" id="cat<?= $categorie['cat_title']; ?>" value="<?= $categorie['cat_id']; ?>">
         </div>
     <?php endforeach;?>
 	

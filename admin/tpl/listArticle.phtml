@@ -1,6 +1,7 @@
 <section class="table-responsive">
     <table id="tableDonnee" class="table">
         <thead>
+            <th></th>
             <th>Titre</th>
             <th>Date publication</th>
             <th>Publié</th>
@@ -10,6 +11,7 @@
         <tbody>
             <?php foreach($articles as $article):?>
                 <tr>
+                    <td><img width="70" src="<?=URL_BLOG.REP_UPLOAD.'articles/'.$article['art_picture']?>"></td>
                     <td><?=$article['art_title']?></td>
                     <td><?=$article['art_datepublish']?></td>
                     <td><?=$article['art_publish']?></td>
