@@ -1,10 +1,14 @@
-<h2>Tous les articles</h2>
-
  <?php foreach($articles as $article):?>
-    <article class="clear">
-        <h3><?=$article['art_title']?></h3>
-        <img src="<?=URL_BLOG.REP_UPLOAD.'articles/'.$article['art_picture'];?>" width="300" alt="" />
-        <p><?=mb_strimwidth(strip_tags($article['art_content']),0,400,'...');?></p>
-        <a href="detailArticle.php?id=<?=$article['art_id']?>">En savoir plus <i class="fa fa-plus-circle"></i></a>
-    </article>
+     <div class="row">   
+        <div class="col-md-3">
+            <img  class="float-left" src="<?=URL_BLOG.REP_UPLOAD.'articles/'.$article['art_picture'];?>" width="150" alt="" />
+        </div>
+        <div class="col-md-9 post-preview">
+            <h2 class="post-title"><?=$article['art_title']?></h2>
+            <p class="post-meta">Posted by <?=$article['user_firstname']?> <?=$article['user_lastname']?> on <?=$article['art_datepublish']?></p>
+            <p><?=mb_strimwidth(strip_tags($article['art_content']),0,200,'...');?></p>
+            <a class="btn btn-primary float-right" href="detailArticle.php?id=<?=$article['art_id']?>">Voir plus</a>
+        </div>
+    </div>
+<hr>
 <?php endforeach;?>

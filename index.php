@@ -11,7 +11,7 @@ try
 	//Fonction connectBdd() dans le fichier core/utilities.php
 	$dbh = connexion();
 
-	$sql  ='SELECT * FROM article';
+	$sql  ='SELECT * FROM article INNER JOIN user ON user.user_id = article.art_user_id';
 	$sth = $dbh->prepare($sql);
 	$sth->execute();
 	$articles = $sth->fetchAll(PDO::FETCH_ASSOC);
