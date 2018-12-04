@@ -1,0 +1,10 @@
+<h2>Tous les articles</h2>
+
+ <?php foreach($articles as $article):?>
+    <article class="clear">
+        <h3><?=$article['art_title']?></h3>
+        <img src="<?=URL_BLOG.REP_UPLOAD.'articles/'.$article['art_picture'];?>" width="300" alt="" />
+        <p><?=mb_strimwidth(strip_tags($article['art_content']),0,400,'...');?></p>
+        <a href="detailArticle.php?id=<?=$article['art_id']?>">En savoir plus <i class="fa fa-plus-circle"></i></a>
+    </article>
+<?php endforeach;?>

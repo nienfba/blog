@@ -1,0 +1,22 @@
+<section class="table-responsive">
+    <table id="tableDonnee" class="table">
+        <thead>
+            <th>Titre</th>
+            <th>Date publication</th>
+            <th>Publié</th>
+            <th>Auteur</th>
+            <th></th>
+        </thead>
+        <tbody>
+            <?php foreach($articles as $article):?>
+                <tr>
+                    <td><?=$article['art_title']?></td>
+                    <td><?=$article['art_datepublish']?></td>
+                    <td><?=$article['art_publish']?></td>
+                    <td><?=$article['art_user_id']?></td>
+                    <td><a href="editArticle?id=<?=$article['art_id']?>"><i class="fas fa-edit"></i></a> <a href="delArticle?id=<?=$article['art_id']?>" data-toggle="modal" data-target="#delete"><i class="fas fa-trash-alt"></i></a></td>
+                </tr> 
+            <?php endforeach;?>
+        </tbody>
+    </table>
+</section>
