@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title><?=$title?></title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+     <!-- FONTAwesome core CSS -->
+    <link href="vendor/fontawesome/css/all.css" rel="stylesheet">
+
+    <!--Datatable -->
+    <link href="http://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css
+" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.php">Gestion d'un blog</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item <?php if($activeMenu=='home'){ echo 'active';}?>">
+              <a class="nav-link" href="index.php">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <?php if ($_SESSION['user']['role'] == 'ROLE_ADMIN'):?>
+             <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle <?php if($vue=='listUser' || $vue=='addUser'){ echo 'active';}?>" href="listUser.php" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Utilisateurs
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item <?php if($vue=='listUser'){ echo 'active';}?>" href="listUser.php">Liste</a>
+                <a class="dropdown-item <?php if($vue=='addUser'){ echo 'active';}?>" href="addUser.php">Ajouter</a>
+              </div>
+            </li>
+            <?php endif;?>
+             <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle <?php if($vue=='listArticle' || $vue=='addArticle'){ echo 'active';}?>" href="listUser.php" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Articles
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item <?php if($vue=='listArticle'){ echo 'active';}?>" href="listArticle.php">Liste</a>
+                <a class="dropdown-item <?php if($vue=='addArticle'){ echo 'active';}?>" href="addArticle.php">Ajouter</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle <?php if($vue=='listCategory' || $vue=='addCategory'){ echo 'active';}?>" href="listUser.php" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Catégorie
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item <?php if($vue=='listCategory'){ echo 'active';}?>" href="listCategory.php">Liste</a>
+                <a class="dropdown-item <?php if($vue=='addCategory'){ echo 'active';}?>" href="addCategory.php">Ajouter</a>
+              </div>
+            </li>
+             <li class="nav-item">
+              <a class="nav-link" href="comments.php">Commentaires</a>
+            </li>
+             <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle <?php if($vue=='listCategory' || $vue=='addCategory'){ echo 'active';}?>" href="listUser.php" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-user"></i>  <?=$_SESSION['user']['name']?>
+              </a>
+               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="editUser.php?id=<?=$_SESSION['user']['id']?>">Mes infos</a>
+                <a class="dropdown-item" href="logout.php">Déconnexion</a>
+              </div>
+              </li>
+          
+          </ul>
+      
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h1 class="mt-5"><?=$title?></h1>
+          <?php 
+          if(isset($flashbag) && $flashbag!=false):
+            foreach($flashbag as $message):?>
+              <div class="alert alert-success"><?=$message?></div>
+          <?php
+            endforeach;
+          endif;
+          ?>
+         
+          <?php
+
+            include('tpl/'.$vue.'.phtml');
+
+            ?>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Suppression</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Êtes-vous sûr de vouloir supprimer cet element ?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <a id="linkdelete" href="test.php"><button type="button" class="btn btn-primary">Supprimer</button></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="http://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    
+    <!-- Data Table -->
+    <script>
+        $(document).ready( function () {
+            $('#tableDonnee').DataTable();
+        });
+
+        $('#delete').on('show.bs.modal', function (e) {
+          $('#linkdelete').attr("href", e.relatedTarget.href);
+          //$('#linkdelete').href =  e.relatedTarget.href;
+        });
+    </script>
+
+  </body>
+
+</html>
