@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `blog3`
+-- Base de données :  `blog`
 --
 
 -- --------------------------------------------------------
@@ -147,9 +147,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`user_id`, `user_email`, `user_password`, `user_firstname`, `user_lastname`, `user_datecreated`, `user_bio`, `user_avatar`, `user_role`) VALUES
-(1, 'fabien.selles@alti-com.fr', '$2y$10$qdEMrMguPG0YWPCuLbDB3ebHC0Am4hh27KKYwwaGOJeoyoTveyz66', 'Selles', 'Fabien', '2018-11-28 02:26:15', 'Tototo', '1543852839_programmationLove.jpg', 'ROLE_ADMIN'),
-(3, 'fab@alti-com.fr', '$2y$10$oHeXc7iSHe62htPGgIXOU.M2X8MFut8Hyagm/VEhWgcToWFiXRoVC', 'test', 'test', '2018-12-04 01:39:00', NULL, NULL, 'ROLE_AUTHOR');
-
+(1, 'login@user.fr', '$2y$10$qdEMrMguPG0YWPCuLbDB3ebHC0Am4hh27KKYwwaGOJeoyoTveyz66', 'Selles', 'Fabien', '2018-11-28 02:26:15', 'Tototo', '1543852839_programmationLove.jpg', 'ROLE_ADMIN');
 --
 -- Contraintes pour les tables déchargées
 --
