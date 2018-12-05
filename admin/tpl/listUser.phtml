@@ -14,9 +14,9 @@
                     <td><?=$user['user_lastname']?></td>
                     <td><?=$user['user_firstname']?></td>
                     <td><a href="mailto:<?=$user['user_email']?>"><?=$user['user_email']?></a></td>
-                    <td><img width="70" src="<?=URL_BLOG.REP_UPLOAD.'/users/'.$user['user_avatar']?>"></td>
+                    <td><img width="70" src="<?=URL_BLOG.REP_UPLOAD.'users/'.$user['user_avatar']?>"></td>
                     <td><?=$user['user_role']?></td>
-                    <td><a href="editUser?id=<?=$user['user_id']?>"><i class="fas fa-edit"></i></a> <a href="delUser?id=<?=$user['user_id']?>" data-toggle="modal" data-target="#delete"><i class="fas fa-trash-alt"></i></a></td>
+                    <td><a href="editUser.php?id=<?=$user['user_id']?>"><i class="fas fa-edit"></i></a> <a href="delUser.php?id=<?=$user['user_id']?>" data-toggle="modal" data-target="#delete"><i class="fas fa-trash-alt"></i></a></td>
                 </tr> 
             <?php endforeach;?>
         </tbody>

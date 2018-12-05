@@ -16,7 +16,7 @@
                     <td><?=$article['art_datepublish']?></td>
                     <td><?=$article['art_publish']?></td>
                     <td><?=$article['art_user_id']?></td>
-                    <td><a href="editArticle?id=<?=$article['art_id']?>"><i class="fas fa-edit"></i></a> <a href="delArticle?id=<?=$article['art_id']?>" data-toggle="modal" data-target="#delete"><i class="fas fa-trash-alt"></i></a></td>
+                    <td><a href="editArticle.php?id=<?=$article['art_id']?>"><i class="fas fa-edit"></i></a> <a href="delArticle.php?id=<?=$article['art_id']?>" data-toggle="modal" data-target="#delete"><i class="fas fa-trash-alt"></i></a></td>
                 </tr> 
             <?php endforeach;?>
         </tbody>
