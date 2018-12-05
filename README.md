@@ -7,10 +7,10 @@ Coming soon !
 
 ## Download and Installation
 
-To begin using this blog system, choose one of the following options to get started:
-* Clone the repo : `git clone https://github.com/nienfba/blog.git`
-* Install dependencies via npm (JS dependencies for frontEnd and BackEnd. Install NodeJs for use npm on command line !): `npm install`
-* Create Database Blog and import sql/Blog.sql 
+To begin using this blog system :
+* Clone the repo : `git clone https://github.com/nienfba/blog.git` or download it !
+* Create Database `blog` and import `sql/blog.sql`
+* Configure file config/config.php.dist and rename to config.php
 
 ## Usage Admin
 
