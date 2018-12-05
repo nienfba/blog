@@ -7,7 +7,6 @@ $vue='home';
 $title = 'Mon super Blog !!!!!';
 try
 {
-
 	//Fonction connectBdd() dans le fichier core/utilities.php
 	$dbh = connexion();
 
